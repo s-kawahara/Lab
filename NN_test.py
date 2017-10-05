@@ -10,8 +10,8 @@ import chainer.links as L
 
 # Set data
 
-X = np.loadtxt('question-x.txt').astype(np.float32)
-Y = np.loadtxt('question-y.txt').astype(np.int32)
+X = np.loadtxt('question-x-num.txt').astype(np.float32)
+Y = np.loadtxt('question-y-num.txt').astype(np.int32)
 N = Y.size
 index = np.arange(N)
 #xtrain = X[index[index % 4 != 3],:]
@@ -57,8 +57,12 @@ for i in range(nrow):
     #print(ans[i,:], cls)
     if cls == yans[i]:
         ok += 1
-        #print(i, ": cls = ", cls, " ans = ", yans[i], " ○")
+        if np.max(ans[i,:]) < 5 :
+            print(i + 1, ": predict = ", cls, " answer = ", yans[i], " ○")
+            print(ans[i,:], cls)
+
     else :
         print(i + 1, ": predict = ", cls, " answer = ", yans[i], " ×")
+        print(ans[i,:], cls)
 
 print(ok, "/", nrow, " = ", (ok * 1.0)/nrow)

@@ -10,8 +10,8 @@ import chainer.links as L
 
 # Set data
 
-X = np.loadtxt('question-x.txt').astype(np.float32)
-Y = np.loadtxt('question-y.txt').astype(np.int32)
+X = np.loadtxt('question-x-num.txt').astype(np.float32)
+Y = np.loadtxt('question-y-num.txt').astype(np.int32)
 N = Y.size
 index = np.arange(N)
 xtrain = X[index[index % 4 != 3],:]
@@ -45,7 +45,7 @@ optimizer.setup(model)
 
 # Learn
 
-n = 105
+n = 82
 bs = 4
 for j in range(2000):
     sffindx = np.random.permutation(n)
@@ -67,15 +67,12 @@ nrow, ncol = ans.shape
 ok = 0
 for i in range(nrow):
     cls = np.argmax(ans[i,:])
-    #print(ans[i,:], cls)
+    print(ans[i,:], cls)
     if cls == yans[i]:
         ok += 1
         #print(i * 4 + 2, "=", cls)
-        print("○")
+        print(i + 1, "○")
     else :
-        print()
-    print()
-    print()
-    print()
+        print(i + 1, "×")
 
 print(ok, "/", nrow, " = ", (ok * 1.0)/nrow)
