@@ -10,14 +10,20 @@ import chainer.links as L
 
 import sys
 
+import pandas as pd
+
 nn_inputs = sys.stdin.readline()
 nn_input = nn_inputs.rstrip().split(' ')
+
+df = pd.read_table("input.txt", header=None)
+
 nn_input = list(map(int, nn_input))
 
 output = [0]
 for num in range(1, 66):
     if num in nn_input:
         output.append(1)
+        print(df[df.index == num])
     else:
         output.append(0)
 
