@@ -12,10 +12,18 @@ import sys
 
 nn_inputs = sys.stdin.readline()
 nn_input = nn_inputs.rstrip().split(' ')
+nn_input = list(map(int, nn_input))
+
+output = [0]
+for num in range(1, 66):
+    if num in nn_input:
+        output.append(1)
+    else:
+        output.append(0)
 
 # Set data
 
-X = np.array(nn_input).astype(np.float32)
+X = np.array(output).astype(np.float32)
 xtest = np.reshape(X, (1, 66))
 
 # Define model
@@ -41,7 +49,7 @@ class MyChain(Chain):
 model = MyChain()
 optimizer = optimizers.SGD()
 optimizer.setup(model)
-serializers.load_npz("mymodel.npz", model) # "mymodel.npz"の情報をmodelに読み込む
+serializers.load_npz("109model.npz", model) # "mymodel.npz"の情報をmodelに読み込む
 
 # Test
 

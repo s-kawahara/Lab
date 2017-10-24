@@ -10,8 +10,8 @@ import chainer.links as L
 
 # Set data
 
-X = np.loadtxt('question-x.txt').astype(np.float32)
-Y = np.loadtxt('question-y.txt').astype(np.int32)
+X = np.loadtxt('question-x-num.txt').astype(np.float32)
+Y = np.loadtxt('question-y-num.txt').astype(np.int32)
 N = Y.size
 index = np.arange(N)
 xtrain = X[index[index % 1 == 0],:]
@@ -45,7 +45,7 @@ optimizer.setup(model)
 
 # Learn
 
-n = 130
+n = 109
 bs = 4
 for j in range(2000):
     sffindx = np.random.permutation(n)
@@ -59,4 +59,4 @@ for j in range(2000):
 
 
 model.to_cpu() # CPUで計算できるようにしておく
-serializers.save_npz("mymodel.npz", model) # npz形式で書き出し
+serializers.save_npz("109model.npz", model) # npz形式で書き出し

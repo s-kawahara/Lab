@@ -42,7 +42,7 @@ class MyChain(Chain):
 model = MyChain()
 optimizer = optimizers.SGD()
 optimizer.setup(model)
-serializers.load_npz("mymodel.npz", model) # "mymodel.npz"の情報をmodelに読み込む
+serializers.load_npz("109model.npz", model) # "mymodel.npz"の情報をmodelに読み込む
 
 # Test
 
