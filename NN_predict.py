@@ -11,20 +11,25 @@ import chainer.links as L
 import sys
 
 import pandas as pd
-
+print("input:")
 nn_inputs = sys.stdin.readline()
 nn_input = nn_inputs.rstrip().split(' ')
 
 df = pd.read_table("input.txt")
+df2 = pd.read_csv("pth20160108/pth20141026-sjis.csv", encoding="shift_jis", low_memory=False)
+verb = nn_input[2]
+verb_class = df2[df2["見出し語"] == verb]['大分類２'].values[0]
 
 output = [0]
 for num in range(1, 66):
     content = df[df.index == num].content.values[0]
     if content in nn_input:
         output.append(1)
+    elif content == verb_class:
+        output.append(1)
     else:
         output.append(0)
-
+print(output)
 # Set data
 
 X = np.array(output).astype(np.float32)
@@ -62,8 +67,8 @@ yy = model.fwd(xt)
 
 ans = yy.data
 cls = np.argmax(ans[0,:])
-print(ans[0,:], cls)
-
+print("\noutput:\n", ans[0,:], cls)
+print("\nquestion_type:")
 if cls == 0:
     print('PERSON')
 elif cls == 1:
