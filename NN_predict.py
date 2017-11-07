@@ -70,7 +70,7 @@ def get_2_words(line):
 
 print("input:")
 line = sys.stdin.readline()
-
+nn_input = []
 tuples = get_2_words(line)
 for t in tuples:
     list1 = t.split(' ')
@@ -78,14 +78,21 @@ for t in tuples:
     if length == 3:
         nn_input = list1
 
-if nn_input is None:
-    print("疑問語と動詞の組が見つかりません。")
+if not nn_input:
+    print("入力エラー発生")
     sys.exit()
-#nn_input = nn_inputs.rstrip().split(' ')
+
+print(nn_input)
 
 df = pd.read_table("input.txt")
 df2 = pd.read_csv("pth20160108/pth20141026-sjis.csv", encoding="shift_jis", low_memory=False)
 verb = nn_input[2]
+#for num in range(3):
+
+if not verb:
+    print("動詞未検出")
+    sys.exit()
+
 verb_class = df2[df2["見出し語"] == verb]['大分類２'].values[0]
 
 output = [0]
