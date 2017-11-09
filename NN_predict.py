@@ -97,6 +97,7 @@ if not verb:
     sys.exit()
 
 verb_class = df2[df2["見出し語"] == verb]['大分類２'].values[0]
+print("動詞クラス:" + verb_class)
 output = [0]
 for num in range(1, 66):
     content = df[df.index == num].content.values[0]
@@ -106,7 +107,7 @@ for num in range(1, 66):
         output.append(1)
     else:
         output.append(0)
-print(output)
+#print(output)
 # Set data
 
 X = np.array(output).astype(np.float32)
@@ -126,7 +127,7 @@ yy = model.fwd(xt)
 
 ans = yy.data
 cls = np.argmax(ans[0,:])
-print("\noutput:\n", ans[0,:], cls)
+#print("\noutput:\n", ans[0,:], cls)
 print("\nquestion_type:")
 if cls == 0:
     print('PERSON')
