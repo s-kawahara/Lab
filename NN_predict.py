@@ -10,6 +10,7 @@ import sys
 
 import pandas as pd
 import CaboCha
+import matplotlib.pyplot as plt
 
 # Define model
 
@@ -30,7 +31,7 @@ class MyChain(Chain):
          return h2
 
 def get_word(tree, chunk):
-    surface = ''
+    surface = {}
     df3 = pd.read_table("question_word.txt")
     content = df3['question'].values
     for i in range(chunk.token_pos, chunk.token_pos + chunk.token_size):
@@ -39,11 +40,13 @@ def get_word(tree, chunk):
         if token.surface in content:
             afters = tree.token(i+1).feature.split(',')
             if afters[0] == '助詞':
-                surface += token.surface + ' ' + tree.token(i+1).surface
+                surface["疑問語"] = token.surface
+                surface["助詞"] = tree.token(i+1).surface
             else:
-                surface += token.surface + ' ' + '空白'
+                surface["疑問語"] = token.surface
+                surface["助詞"] = "無し"
         elif features[0] == '動詞':
-            surface += features[6]
+            surface["動詞"] = features[6]
             break
     return surface
 
@@ -64,41 +67,40 @@ def get_2_words(line):
             from_surface = get_word(tree, chunk)
             to_chunk = chunk_dic[chunk.link]
             to_surface = get_word(tree, to_chunk)
-            tuples.append(from_surface + ' ' + to_surface)
+            from_surface.update(to_surface)
+            tuples.append(from_surface)
     return tuples
 
 
 print("input:")
 line = sys.stdin.readline()
-nn_input = []
+nn_input = {}
 tuples = get_2_words(line)
+
 for t in tuples:
-    list1 = t.split(' ')
-    length = len(list1)
+    length = len(t)
     if length == 3:
-        nn_input = list1
+        nn_input = t
 
 if not nn_input:
     print("入力エラー発生")
+    print(tuples)
     sys.exit()
 
 print(nn_input)
 
 df = pd.read_table("input.txt")
 df2 = pd.read_csv("pth20160108/pth20141026-sjis.csv", encoding="shift_jis", low_memory=False)
-verb = nn_input[2]
-#for num in range(3):
-
+verb = nn_input["動詞"]
 if not verb:
     print("動詞未検出")
     sys.exit()
 
 verb_class = df2[df2["見出し語"] == verb]['大分類２'].values[0]
-
 output = [0]
 for num in range(1, 66):
     content = df[df.index == num].content.values[0]
-    if content in nn_input:
+    if content in nn_input.values():
         output.append(1)
     elif content == verb_class:
         output.append(1)
@@ -142,3 +144,7 @@ elif cls == 6:
     print('NUMEX')
 elif cls == 7:
     print('MONEY')
+
+plt.plot(ans[0,:])
+plt.xticks([0,1,2,3,4,5,6,7], ["人","組織","場所","人工物","日付","時間","数量","金額"])
+plt.show()
