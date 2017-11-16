@@ -1,0 +1,37 @@
+Evaluation data for NTCIR-8 Community QA Pilot Task
+
+Aug 2010
+----------------------------------------------------
+
+Files
+=====
+* ntcir8cqa-BA.qrels :
+This is the NTCIR-format qrels file (See README.cqa in [2])
+based on the Best Answer (BA) selected by the questioner
+for each question.
+Note that there is exactly one BA per question.
+See Section 2.1 in the CQA overview paper part II [1].
+
+* ntcir8cqa-GA.qrels :
+This is the NTCIR-format qrels file (See README.cqa in [2])
+based on graded assessments of four answer assessors
+as described in Section 2.2 (See also Table 2)
+in the CQA overview paper part II [1].
+
+* ntcir8cqa-GAW.qrels :
+This is the NTCIR-format qrels file (See README.cqa in [2])
+based on graded assessments of four answer assessors
+as described in Section 4 (See also Table 21)
+in the CQA overview paper part II [1].
+
+[1] Sakai et al.:
+Overview of the NTCIR-8 Community QA Pilot Task (Part II):
+System Evaluation, NTCIR-8 Proceedings, pp.433-457 (2010)
+http://research.nii.ac.jp/ntcir/workshop/OnlineProceedings8/
+NTCIR/02-NTCIR8-OV-CQA-SakaiT.pdf
+
+[2] NTCIREVAL:
+http://research.nii.ac.jp/ntcir/tools/ntcireval-en.html
+
+-----------------------------------------------------
+Tetsuya Sakai (Microsoft Research Asia, China)

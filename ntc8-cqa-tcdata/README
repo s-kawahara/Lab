@@ -1,0 +1,80 @@
+Task data for NTCIR-8 Community QA Pilot Task
+
+Dec 2010
+----------------------------------------------------
+
+Files
+======
+* README (ASCII):
+This file.
+
+* QUESTALL-IDLISTs (ASCII):
+QID (question ID) lists of Yahoo Chiebukuro data version 1.0.
+
+* QUEST1500 (UTF-8): 
+Data set of tagged questions (1500) and answers (7443).
+
+* QUEST1500-IDLISTs (ASCII):
+QID (question ID) lists of QUEST1500.
+
+* BAs_QID-AID (ASCII):
+Best answer lists of QID (question ID) and AID (answer ID).
+
+* BAs_QNO-ANO (ASCII):
+Best answer lists of QNO (question number) and ANO (answer number).
+
+* INTEGRAL-TOPCATEGORY-ANS20 (UTF-8):
+Correspondence list between 15 categories in Yahoo Chiebukuro website
+and 285 categories in Yahoo Chiebukuro data version 1.0
+(less than 21 answers to questions).
+
+* JUDGE-CATE (UTF-8):
+Correspondence list between category number and category name.
+
+* QNO-QID-CATE-ANS (ASCII):
+List of QNO (question number), QID (question ID), category name and
+number of answers.
+
+* QNO_QID-ANO_AIDs (ASCII):
+Correspondence list between QNO (question number) - QID (question ID)
+and ANO (answer number) - AID (answer ID).
+
+* QNO-QID-qGrade (ASCII):
+List of QNO (question number), QID (question ID) and question grade.
+
+* QID-AID-aGrade (ASCII):
+List of QID (question ID), AID (answer ID) and answer grade.
+
+* QNO-ANO-aGrade (ASCII):
+List of QNO (question number), ANO (answer number) and answer grade.
+
+* QNO-QID-qGrade-ANO-AID-aGrade (ASCII):
+List of QNO (question number), QID (question ID), question grade, 
+ANO (answer number), AID (answer ID) and answer grade.
+
+* Overview-CQA-Part1-Testcollection.pdf (PDF file):
+NTCIR-8 CQA Overview paper part I (specification of the task).
+
+* Overview-CQA-Part2-Evaluation.pdf (PDF file):
+NTCIR-8 CQA Overview paper part II (evaluation results).
+
+* Qrels/ (Directory) :
+This directory contains a set of data for evaluation of the task.
+======
+
+For the specification of CQA task and evaluation results,
+please refer to 
+Overview-CQA-Part1-Testcollection.pdf (Specification of the Task) and
+Overview-CQA-Part2-Evaluation.pdf (Evaluation Results).
+
+-----------------------------------------------------
+NTCIR-8 CQA Pilot Task Organizers
+* Organizers
+  - Daisuke Ishikawa (National Institute of Informatics, Japan)
+  - Noriko Kando (National Institute of Informatics, Japan)
+  - Tetsuya Sakai (Microsoft Research Asia, China) 
+* Advisors
+  - Kazuko Kuriyama (Shirayuri College, Japan)
+  - Yohei Seki (Graduate School of Library, 
+Information and Media Studies, University of Tsukuba, Japan)
+
