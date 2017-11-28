@@ -48,6 +48,9 @@ def get_word(tree, chunk):
         elif features[0] == '動詞':
             surface["動詞"] = features[6]
             break
+        elif features[1] == 'サ変接続':
+            surface["動詞"] = features[6] + "する"
+            break
     return surface
 
 def get_2_words(line):
