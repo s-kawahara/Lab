@@ -24,8 +24,8 @@ yans = Y[index[index % 1 == 0]]
 class MyChain(Chain):
     def __init__(self):
         super(MyChain, self).__init__(
-            l1=L.Linear(66,100),
-            l2=L.Linear(100,8),
+            l1=L.Linear(78,100),
+            l2=L.Linear(100,10),
         )
 
     def __call__(self,x,y):
@@ -57,11 +57,11 @@ for i in range(nrow):
     #print(ans[i,:], cls)
     if cls == yans[i]:
         ok += 1
-        print(i + 1, ": predict = ", cls, " answer = ", yans[i], " ○")
-        print(ans[i,:], cls)
+        print(cls," ○")
+        #print(ans[i,:], cls)
 
     else :
-        print(i + 1, ": predict = ", cls, " answer = ", yans[i], " ×")
-        print(ans[i,:], cls)
+        print(cls," ×")
+        #print(ans[i,:], cls)
 
 print(ok, "/", nrow, " = ", (ok * 1.0)/nrow)
