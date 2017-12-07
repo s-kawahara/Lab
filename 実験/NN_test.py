@@ -57,11 +57,11 @@ for i in range(nrow):
     #print(ans[i,:], cls)
     if cls == yans[i]:
         ok += 1
-        print(cls," ○")
+        print("○")
         #print(ans[i,:], cls)
 
     else :
-        print(cls," ×")
+        print("×")
         #print(ans[i,:], cls)
 
 print(ok, "/", nrow, " = ", (ok * 1.0)/nrow)
