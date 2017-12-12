@@ -10,8 +10,8 @@ import chainer.links as L
 
 # Set data
 
-X = np.loadtxt('question-x_test100.txt').astype(np.float32)
-Y = np.loadtxt('question-y_test100.txt').astype(np.int32)
+X = np.loadtxt('question-x_test130_mid.txt').astype(np.float32)
+Y = np.loadtxt('question-y_test130.txt').astype(np.int32)
 N = Y.size
 index = np.arange(N)
 #xtrain = X[index[index % 4 != 3],:]
@@ -24,7 +24,7 @@ yans = Y[index[index % 1 == 0]]
 class MyChain(Chain):
     def __init__(self):
         super(MyChain, self).__init__(
-            l1=L.Linear(78,100),
+            l1=L.Linear(82,100),
             l2=L.Linear(100,10),
         )
 
@@ -42,7 +42,7 @@ class MyChain(Chain):
 model = MyChain()
 optimizer = optimizers.SGD()
 optimizer.setup(model)
-serializers.load_npz("309model.npz", model) # "mymodel.npz"の情報をmodelに読み込む
+serializers.load_npz("309model_mid.npz", model) # "mymodel.npz"の情報をmodelに読み込む
 
 # Test
 
@@ -57,11 +57,11 @@ for i in range(nrow):
     #print(ans[i,:], cls)
     if cls == yans[i]:
         ok += 1
-        print("○")
-        #print(ans[i,:], cls)
+        #print("○")
+        print(cls)
 
     else :
-        print("×")
-        #print(ans[i,:], cls)
+        #print("×")
+        print(cls)
 
 print(ok, "/", nrow, " = ", (ok * 1.0)/nrow)
