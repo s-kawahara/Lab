@@ -4,7 +4,7 @@ inputs.each do |input|
   input.chomp!
   input = input.split(" ")
   result = ''
-  (0..77).each do |x|
+  (0..54).each do |x|
     case x.to_s
     when input[0]
       result << '1'
