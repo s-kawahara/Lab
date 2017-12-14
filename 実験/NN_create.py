@@ -10,7 +10,7 @@ import chainer.links as L
 
 # Set data
 
-X = np.loadtxt('question-x_309.txt').astype(np.float32)
+X = np.loadtxt('question-x_309_small.txt').astype(np.float32)
 Y = np.loadtxt('question-y_309.txt').astype(np.int32)
 N = Y.size
 index = np.arange(N)
@@ -24,7 +24,7 @@ ytrain = Y[index[index % 1 == 0]]    #教師信号は整数値
 class MyChain(Chain):
     def __init__(self):
         super(MyChain, self).__init__(
-            l1=L.Linear(55,100),
+            l1=L.Linear(113,100),
             l2=L.Linear(100,10),
         )
 
@@ -59,4 +59,4 @@ for j in range(2000):
 
 
 model.to_cpu() # CPUで計算できるようにしておく
-serializers.save_npz("309model.npz", model) # npz形式で書き出し
+serializers.save_npz("309model_small.npz", model) # npz形式で書き出し
