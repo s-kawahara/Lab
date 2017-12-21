@@ -10,8 +10,8 @@ import chainer.links as L
 
 # Set data
 
-X = np.loadtxt('question-x_test130_small.txt').astype(np.float32)
-Y = np.loadtxt('question-y_test130.txt').astype(np.int32)
+X = np.loadtxt('question-x_test152_small.txt').astype(np.float32)
+Y = np.loadtxt('question-y_test152.txt').astype(np.int32)
 N = Y.size
 index = np.arange(N)
 #xtrain = X[index[index % 4 != 3],:]
